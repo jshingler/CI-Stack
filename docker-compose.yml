@@ -31,3 +31,22 @@ concourse-worker:
 nexus:
   image: sonatype/nexus3
   ports: ["8081:8081"]
+
+
+# http://jgsqware.github.io/2015/11/draft/sonarqube-with-postgresql-on-docker/
+
+sonarqube:
+  image: sonarqube
+  ports:
+   - "9000:9000"
+   - "5432:5432"
+  links:
+    - sonardb:sonardb
+  environment:
+   - SONARQUBE_JDBC_URL=jdbc:postgresql://sonardb:5432/sonar
+
+sonardb:
+  image: postgres
+  environment:
+   - POSTGRES_USER=sonar
+   - POSTGRES_PASSWORD=sonar

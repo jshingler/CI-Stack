@@ -1,6 +1,6 @@
 # CI-Stack
 
-I took the docker compose and added Maven and Sonar (TBD).
+I took the docker compose and added Maven and Sonar.
 
 
 ## Instructions for Settin up Concourse CI
