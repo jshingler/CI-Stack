@@ -36,7 +36,6 @@ The stack is compose of several containers.  It requires additional Memory and C
 Increase CPU to 6 and Memory to 4 GB.
 
 ![CPU Memory Settings](/resources/images/memory_cpu.png)
-
 ### AUFS Bug
 There is an AUFS Bug that requires setting an advanced parameter.
 
