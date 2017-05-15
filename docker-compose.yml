@@ -29,8 +29,18 @@ concourse-worker:
     CONCOURSE_TSA_HOST: concourse-web
 
 nexus:
-  image: sonatype/nexus3
-  ports: ["8081:8081"]
+  # image: sonatype/nexus3
+  image: atsistemas/docker-nexus3-ssl
+  # NOTE: Dont for get to add these as insecure-registry entries on
+  #       your local docker.
+  ports:
+    - "8081:8081"
+    - "8443:8443"
+    - "18443:18443"
+    - "18444:18444"
+  # volumes: ["./keystore.jks:/nexus-data/keystore.jks" ]
+  # environment:
+  #   - JKS_PASSWORD=changeit
 
 
 # http://jgsqware.github.io/2015/11/draft/sonarqube-with-postgresql-on-docker/
