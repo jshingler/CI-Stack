@@ -8,7 +8,7 @@ concourse-db:
 
 concourse-web:
   image: concourse/concourse:2.7.7
-  links: [concourse-db, nexus]
+  links: [concourse-db]
   command: web
   ports: ["8080:8080"]
   volumes: ["./keys/web:/concourse-keys"]
@@ -22,17 +22,18 @@ concourse-web:
 concourse-worker:
   image: concourse/concourse:2.7.7
   privileged: true
-  links: [concourse-web, nexus]
+  links: [concourse-web ]
   command: worker
   volumes: ["./keys/worker:/concourse-keys"]
   environment:
     CONCOURSE_TSA_HOST: concourse-web
 
+
+  # NOTE: Dont for get to add these as insecure-registry entries on
+  #       your local docker.
 nexus:
   # image: sonatype/nexus3
   image: atsistemas/docker-nexus3-ssl
-  # NOTE: Dont for get to add these as insecure-registry entries on
-  #       your local docker.
   ports:
     - "8081:8081"
     - "8443:8443"
